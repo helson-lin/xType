@@ -1,21 +1,19 @@
 # xType - File Type Manager
-<div align="center">
-
-**Made with ❤️ for the macOS community**
-
-[![GitHub stars](https://img.shields.io/github/stars/helson-lin/xType?style=social)](https://github.com/helson-lin/xType/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/helson-lin/xType?style=social)](https://github.com/helson-lin/xType/network)
-[![GitHub license](https://img.shields.io/github/license/helson-lin/xType)](https://github.com/helson-lin/xType/blob/main/LICENSE)
 
 <!-- Language Switch -->
-[**🇺🇸 English**](#) | [**🇨🇳 中文**](./README-ZH.md)
+[**🇺🇸 English**](#english) | [**🇨🇳 中文**](#中文)
 
 ---
-</div>
+
+## English
+
+<div id="english"></div>
 
 ### 🎯 Overview
 
-**xType** is a modern, intuitive file type manager for macOS that allows you to easily manage and configure default applications for different file types.
+**xType** is a modern, intuitive file type manager for macOS that allows you to easily manage and configure default applications for different file types. With its sleek interface and powerful batch operations, xType makes file association management simple and efficient.
+
+![app](app.png)
 
 ### ✨ Features
 
@@ -37,14 +35,14 @@
 ### 📦 Installation
 
 #### Option 1: Download Release (Recommended)
-1. Download the latest `.dmg` file from [Releases](https://github.com/helson-lin/xType/releases)
+1. Download the latest `.dmg` file from [Releases](https://github.com/yourname/xType/releases)
 2. Open the DMG and drag **xType.app** to your **Applications** folder
 3. Launch xType from Applications and grant necessary permissions
 
 #### Option 2: Build from Source
 ```bash
 # Clone the repository
-git clone https://github.com/helson-lin/xType.git
+git clone https://github.com/yourname/xType.git
 cd xType
 
 # Build locally
@@ -100,7 +98,7 @@ The interface language automatically follows your system language setting.
 xcode-select --install
 
 # Clone and build
-git clone https://github.com/helson-lin/xType.git
+git clone https://github.com/yourname/xType.git
 cd xType
 ./scripts/build_local.sh
 ```
@@ -122,8 +120,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-### Support
+### 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/helson-lin/xType/issues)
-- **Feature Requests**: [GitHub Discussions](https://github.com/helson-lin/xType/discussions)
+- **Issues**: [GitHub Issues](https://github.com/yourname/xType/issues)
+- **Feature Requests**: [GitHub Discussions](https://github.com/yourname/xType/discussions)
 - **Documentation**: [Build Guide](BUILD_GUIDE.md)
+
+### 🙏 Acknowledgments
+
+- Built with **SwiftUI** and modern macOS frameworks
+- Inspired by macOS system preferences design
+- Thanks to the open-source community for tools and inspiration
+
