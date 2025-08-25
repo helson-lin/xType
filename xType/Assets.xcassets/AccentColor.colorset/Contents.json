@@ -1,0 +1,26 @@
+{
+  "colors" : [
+    {
+      "color" : {
+        "platform" : "osx",
+        "reference" : "textColor"
+      },
+      "idiom" : "mac"
+    },
+    {
+      "color" : {
+        "platform" : "osx",
+        "reference" : "textColor"
+      },
+      "idiom" : "mac",
+      "locale" : "en"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}

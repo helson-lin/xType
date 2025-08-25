@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.xcarchive
+*.app.dSYM.zip
+
+# Build artifacts
+build/
+*.dmg
+*.pkg
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods (if used)
+Pods/
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Test files
+test_localization.swift
+LOCALIZATION_SETUP.md

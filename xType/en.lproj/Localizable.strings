@@ -1,0 +1,61 @@
+/*
+  Localizable.strings (English)
+  xType
+
+  Created for xType internationalization
+*/
+
+// Category names
+"category.audio" = "Audio";
+"category.video" = "Video";
+"category.image" = "Image";
+"category.text" = "Text";
+"category.archive" = "Archive";
+"category.other" = "Other";
+"category.all" = "All";
+
+// Search and UI
+"search.placeholder" = "Search file types or applications...";
+"search.clear.help" = "Clear search";
+"loading.message" = "Loading file types...";
+"fileTypes.count" = " file types";
+
+// Buttons
+"button.batch.setup" = "Batch Setup";
+"button.batch.setup.help" = "Batch set default app for selected file types";
+"button.refresh" = "Refresh";
+"button.refresh.help" = "Refresh default app information";
+"button.reset" = "Reset";
+"button.reset.help" = "Reset all file type and app associations";
+"button.choose.app" = "Choose App";
+"button.browse.app" = "Browse Apps…";
+"button.select.all" = "Select All";
+"button.deselect.all" = "Deselect All";
+"button.cancel" = "Cancel";
+"button.confirm" = "OK";
+
+// File type status
+"status.no.app" = "Not Set";
+"status.no.default.app" = "No Default App";
+"status.default.app" = "Default App";
+"spinner.loading" = "Loading";
+
+// Sheet titles and messages
+"sheet.choose.app.title" = "Choose Default App for %@";
+"sheet.batch.title" = "Batch Set Default App";
+"sheet.current.selection" = "Current Selection";
+"sheet.no.app.selected" = "No app selected";
+"sheet.select.app.instruction" = "Click button below to select an application";
+"sheet.selected.count" = "Selected %d items";
+
+// Search and filter
+"search.file.types" = "Search file types/extensions";
+
+// Toast messages - will be handled in FileTypeManager
+"toast.app.set" = "Set %@ as default app for %@";
+"toast.batch.set" = "Set %@ as default app for %d file types in %@ category";
+"toast.refresh.success" = "Default app information refreshed";
+
+// Dialog messages
+"dialog.choose.app.for.type" = "Choose an application to open %@ files";
+"dialog.choose.app.for.category" = "Choose an application to batch open %@ files";

@@ -1,0 +1,79 @@
+name: ✨ Feature Request / 功能请求
+description: Suggest an idea for this project / 为此项目建议一个想法
+title: "[Feature]: "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! / 感谢您建议新功能！
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your feature request related to a problem? / 您的功能请求是否与问题相关？
+      description: A clear and concise description of what the problem is. / 清楚简洁地描述问题是什么。
+      placeholder: I'm always frustrated when... / 当...时我总是感到沮丧
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like / 描述您想要的解决方案
+      description: A clear and concise description of what you want to happen. / 清楚简洁地描述您希望发生什么。
+      placeholder: I would like... / 我希望...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you've considered / 描述您考虑过的替代方案
+      description: A clear and concise description of any alternative solutions or features you've considered. / 清楚简洁地描述您考虑过的任何替代解决方案或功能。
+      placeholder: Alternative solutions... / 替代解决方案...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority / 优先级
+      description: How important is this feature to you? / 这个功能对您有多重要？
+      options:
+        - Low / 低
+        - Medium / 中等
+        - High / 高
+        - Critical / 重要
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: implementation
+    attributes:
+      label: Implementation / 实现
+      description: Are you willing to help implement this feature? / 您愿意帮助实现此功能吗？
+      options:
+        - label: I can help implement this feature / 我可以帮助实现此功能
+        - label: I can test the implementation / 我可以测试实现
+        - label: I can provide feedback during development / 我可以在开发期间提供反馈
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context / 附加上下文
+      description: Add any other context or screenshots about the feature request here. / 在此处添加有关功能请求的任何其他上下文或截图。
+      placeholder: Additional information... / 附加信息...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct / 行为准则
+      description: By submitting this issue, you agree to follow our Code of Conduct / 通过提交此问题，您同意遵循我们的行为准则
+      options:
+        - label: I agree to follow this project's Code of Conduct / 我同意遵循此项目的行为准则
+          required: true

@@ -1,0 +1,142 @@
+name: Build and Release xType
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  PRODUCT_NAME: xType
+  SCHEME_NAME: xType
+  CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: macos-14
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.4'
+        
+    - name: Show Xcode Version
+      run: xcodebuild -version
+      
+    - name: Show Available SDKs
+      run: xcodebuild -showsdks
+      
+    - name: Clean Build Folder
+      run: |
+        xcodebuild clean \
+          -scheme "$SCHEME_NAME" \
+          -configuration $CONFIGURATION
+          
+    - name: Build App
+      run: |
+        xcodebuild archive \
+          -scheme "$SCHEME_NAME" \
+          -configuration $CONFIGURATION \
+          -archivePath "build/$PRODUCT_NAME.xcarchive" \
+          -destination "generic/platform=macOS" \
+          SKIP_INSTALL=NO \
+          BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+          
+    - name: Export App
+      run: |
+        xcodebuild -exportArchive \
+          -archivePath "build/$PRODUCT_NAME.xcarchive" \
+          -exportPath "build/export" \
+          -exportOptionsPlist "scripts/ExportOptions.plist"
+          
+    - name: Create DMG
+      run: |
+        chmod +x scripts/create_dmg.sh
+        ./scripts/create_dmg.sh
+        
+    - name: Upload DMG as Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.PRODUCT_NAME }}-${{ github.sha }}
+        path: build/*.dmg
+        retention-days: 30
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: build/*.dmg
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+  # Optional: Build for different architectures
+  build-universal:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: macos-14
+    
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '15.4'
+        
+    - name: Build Universal Binary
+      run: |
+        # Build for Intel
+        xcodebuild archive \
+          -scheme "$SCHEME_NAME" \
+          -configuration $CONFIGURATION \
+          -archivePath "build/$PRODUCT_NAME-intel.xcarchive" \
+          -destination "generic/platform=macOS,arch=x86_64" \
+          SKIP_INSTALL=NO
+          
+        # Build for Apple Silicon
+        xcodebuild archive \
+          -scheme "$SCHEME_NAME" \
+          -configuration $CONFIGURATION \
+          -archivePath "build/$PRODUCT_NAME-arm64.xcarchive" \
+          -destination "generic/platform=macOS,arch=arm64" \
+          SKIP_INSTALL=NO
+          
+    - name: Create Universal App
+      run: |
+        # Extract apps from archives
+        INTEL_APP="build/$PRODUCT_NAME-intel.xcarchive/Products/Applications/$PRODUCT_NAME.app"
+        ARM64_APP="build/$PRODUCT_NAME-arm64.xcarchive/Products/Applications/$PRODUCT_NAME.app"
+        UNIVERSAL_APP="build/$PRODUCT_NAME-Universal.app"
+        
+        # Copy Intel app as base
+        cp -R "$INTEL_APP" "$UNIVERSAL_APP"
+        
+        # Create universal binary
+        lipo -create \
+          "$INTEL_APP/Contents/MacOS/$PRODUCT_NAME" \
+          "$ARM64_APP/Contents/MacOS/$PRODUCT_NAME" \
+          -output "$UNIVERSAL_APP/Contents/MacOS/$PRODUCT_NAME"
+          
+        # Verify universal binary
+        lipo -info "$UNIVERSAL_APP/Contents/MacOS/$PRODUCT_NAME"
+        
+    - name: Create Universal DMG
+      run: |
+        chmod +x scripts/create_dmg.sh
+        UNIVERSAL_BUILD=true ./scripts/create_dmg.sh
+        
+    - name: Upload Universal DMG
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.PRODUCT_NAME }}-Universal-${{ github.sha }}
+        path: build/*Universal*.dmg
+        retention-days: 30

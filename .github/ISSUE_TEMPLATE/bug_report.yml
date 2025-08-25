@@ -1,0 +1,74 @@
+name: 🐛 Bug Report / Bug 报告
+description: Create a report to help us improve / 创建报告帮助我们改进
+title: "[Bug]: "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+        感谢您抽出时间填写此错误报告！
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened? / 发生了什么？
+      description: Also tell us, what did you expect to happen? / 请告诉我们，您期望发生什么？
+      placeholder: Tell us what you see! / 告诉我们您看到了什么！
+      value: "A bug happened!"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version / 版本
+      description: What version of xType are you running? / 您运行的是哪个版本的 xType？
+      options:
+        - Latest release (from GitHub) / 最新发布版本 (来自 GitHub)
+        - Built from source / 从源代码构建
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What macOS version are you seeing the problem on? / 您在哪个 macOS 版本上遇到此问题？
+      multiple: false
+      options:
+        - macOS 14 (Sonoma)
+        - macOS 13 (Ventura)
+        - macOS 12 (Monterey)
+        - Other / 其他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: architecture
+    attributes:
+      label: Mac Architecture / Mac 架构
+      options:
+        - Apple Silicon (M1/M2/M3)
+        - Intel
+        - I don't know / 我不知道
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output / 相关日志输出
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks. / 请复制并粘贴任何相关的日志输出。这将自动格式化为代码，因此无需反引号。
+      render: shell
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct / 行为准则
+      description: By submitting this issue, you agree to follow our Code of Conduct / 通过提交此问题，您同意遵循我们的行为准则
+      options:
+        - label: I agree to follow this project's Code of Conduct / 我同意遵循此项目的行为准则
+          required: true
