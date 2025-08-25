@@ -90,7 +90,7 @@ Features:
 - Modern and intuitive interface
 - Supports multiple languages (English/中文)
 
-For more information, visit: https://github.com/helson-lin/xType
+For more information, visit: https://github.com/yourname/xType
 
 Enjoy using xType! 🎉
 EOF
